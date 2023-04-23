@@ -10,6 +10,7 @@ class Snake():
     def __init__(self):
         self.snake_body=[]
         self.create_snake()
+        self.head=self.snake_body[0]
 
     def create_snake(self):
     # Create initial  snake body
@@ -43,3 +44,14 @@ class Snake():
     def right(self):
         if self.snake_body[0].heading()!=LEFT:
             self.snake_body[0].seth(RIGHT)
+
+    def add_segment(self,position):
+            t=Turtle()
+            t.pu()
+            t.goto(position)
+            t.shape('square')
+            t.color('yellow')
+            self.snake_body.append(t)
+
+    def extend(self):
+        self.add_segment(self.snake_body[-1].position())
